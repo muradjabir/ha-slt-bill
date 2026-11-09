@@ -55,6 +55,23 @@ This custom component communicates with the official [MySLT](https://myslt.slt.l
 
 ---
 
+## Creating a MySLT Account & Linking Connections
+
+If you do not already have a MySLT login:
+
+1. **Register on MySLT:**
+   - Visit the official portal at [myslt.slt.lk](https://myslt.slt.lk/) or download the **MySLT App** from Google Play Store or Apple App Store.
+   - Click **Register** and enter your mobile number (or email) and desired password.
+   - Enter the 4-digit verification OTP sent to your phone to complete registration.
+2. **Link Your SLT Connections:**
+   - Log into [myslt.slt.lk](https://myslt.slt.lk/).
+   - Navigate to **Manage Services / Add Account**.
+   - Enter your 10-digit SLT Account Number (e.g., `0050273956`) or telephone number to attach your landline, Fiber broadband, or PEO TV connections to your profile.
+3. **Connect to Home Assistant:**
+   - Use your registered MySLT username (or mobile number) and password in Home Assistant. The integration will automatically discover all linked connections.
+
+---
+
 ## Configuration
 
 1. In Home Assistant, navigate to **Settings** > **Devices & Services**.
