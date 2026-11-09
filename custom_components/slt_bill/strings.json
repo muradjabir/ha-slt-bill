@@ -1,0 +1,78 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Sri Lanka Telecom (SLT)",
+        "description": "Enter your MySLT credentials to track bill balances and broadband usage across your accounts and connections.",
+        "data": {
+          "username": "Username / Mobile / Email",
+          "password": "Password",
+          "scan_interval_hours": "Update Interval in Hours (minimum 2 hours)"
+        }
+      },
+      "connections": {
+        "title": "Select SLT Connections",
+        "description": "Select which telephone connections associated with your MySLT account you would like to track in Home Assistant:",
+        "data": {
+          "selected_connections": "Connections to Monitor"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid MySLT username or password. Please verify your credentials at myslt.slt.lk.",
+      "cannot_connect": "Failed to connect to SLT API gateway. Please check your network connection.",
+      "no_connections": "No active SLT connections or telephone accounts were found for this login.",
+      "must_select_connection": "Please select at least one connection to monitor.",
+      "unknown": "Unexpected error occurred."
+    },
+    "abort": {
+      "already_configured": "This MySLT account is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "SLT Integration Options",
+        "description": "Adjust the polling frequency for fetching SLT billing and broadband usage updates.",
+        "data": {
+          "scan_interval_hours": "Update Interval in Hours (minimum 2 hours)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "outstanding_balance": {
+        "name": "Outstanding Balance"
+      },
+      "last_bill_amount": {
+        "name": "Last Bill Amount"
+      },
+      "last_payment_amount": {
+        "name": "Last Payment Amount"
+      },
+      "payment_due_date": {
+        "name": "Payment Due Date"
+      },
+      "last_bill_date": {
+        "name": "Last Bill Date"
+      },
+      "last_payment_date": {
+        "name": "Last Payment Date"
+      },
+      "connection_status": {
+        "name": "Connection Status"
+      },
+      "broadband_data_used": {
+        "name": "Broadband Data Used"
+      },
+      "broadband_package": {
+        "name": "Broadband Package"
+      },
+      "broadband_data_remaining": {
+        "name": "Broadband Data Remaining"
+      }
+    }
+  }
+}
+

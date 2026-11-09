@@ -1,0 +1,13 @@
+{
+  "domain": "slt_bill",
+  "name": "SLT Bill & Broadband (Sri Lanka)",
+  "codeowners": ["@muradjabir"],
+  "config_flow": true,
+  "documentation": "https://github.com/muradjabir/ha-slt-bill",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/muradjabir/ha-slt-bill/issues",
+  "requirements": [],
+  "version": "1.0.0"
+}
+
