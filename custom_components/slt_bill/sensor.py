@@ -116,6 +116,7 @@ class SLTOutstandingBalanceSensor(SLTBaseSensor):
     _attr_state_class = SensorStateClass.TOTAL
     _attr_native_unit_of_measurement = "LKR"
     _attr_icon = "mdi:cash-multiple"
+    _unrecorded_attributes = frozenset({"customer_name"})
 
     def __init__(self, coordinator: SLTBillCoordinator, conn_key: str) -> None:
         """Initialize."""
