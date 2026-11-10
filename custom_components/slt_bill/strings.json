@@ -16,6 +16,13 @@
         "data": {
           "selected_connections": "Connections to Monitor"
         }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate MySLT Account",
+        "description": "Your MySLT credentials for {username} are no longer valid. Please enter your new password to resume updates.",
+        "data": {
+          "password": "Password"
+        }
       }
     },
     "error": {
@@ -26,7 +33,8 @@
       "unknown": "Unexpected error occurred."
     },
     "abort": {
-      "already_configured": "This MySLT account is already configured."
+      "already_configured": "This MySLT account is already configured.",
+      "reauth_successful": "Re-authentication was successful. Your MySLT credentials have been updated."
     }
   },
   "options": {

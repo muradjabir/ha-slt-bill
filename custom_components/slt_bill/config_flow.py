@@ -158,6 +158,57 @@ class SLTConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         )
 
 
+    async def async_step_reauth(
+        self, entry_data: dict[str, Any]
+    ) -> FlowResult:
+        """Handle re-authentication triggered by ConfigEntryAuthFailed."""
+        return await self.async_step_reauth_confirm()
+
+    async def async_step_reauth_confirm(
+        self, user_input: dict[str, Any] | None = None
+    ) -> FlowResult:
+        """Dialog that prompts user for new password to re-authenticate."""
+        errors: dict[str, str] = {}
+        reauth_entry = self._get_reauth_entry()
+        username = reauth_entry.data[CONF_USERNAME]
+
+        if user_input is not None:
+            password = user_input[CONF_PASSWORD].strip()
+            try:
+                await self.hass.async_add_executor_job(
+                    validate_slt_credentials, username, password
+                )
+            except SLTAuthError:
+                errors["base"] = "invalid_auth"
+            except SLTConnectionError:
+                errors["base"] = "cannot_connect"
+            except Exception:  # pylint: disable=broad-except
+                _LOGGER.exception("Unexpected exception in SLT reauth flow")
+                errors["base"] = "unknown"
+            else:
+                return self.async_update_reload_and_abort(
+                    reauth_entry,
+                    data_updates={CONF_PASSWORD: password},
+                )
+
+        schema = vol.Schema(
+            {
+                vol.Required(CONF_PASSWORD): selector.TextSelector(
+                    selector.TextSelectorConfig(
+                        type=selector.TextSelectorType.PASSWORD
+                    )
+                ),
+            }
+        )
+
+        return self.async_show_form(
+            step_id="reauth_confirm",
+            data_schema=schema,
+            errors=errors,
+            description_placeholders={"username": username},
+        )
+
+
 class SLTOptionsFlowHandler(config_entries.OptionsFlow):
     """Handle options for SLT Bill integration."""
 
